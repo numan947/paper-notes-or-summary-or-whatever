@@ -6,3 +6,7 @@
 - [ ] [BATCH NORMALIZATION](https://arxiv.org/pdf/1502.03167.pdf)
 - [ ] [KAIMING INITIALIZATION](https://arxiv.org/abs/1502.01852)
   
+### REFERENCED BY FASTTEXT PAPER
+- [ ] [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)
+- [ ] [Character-level Convolutional Networks for Text Classification](https://papers.nips.cc/paper/5782-character-level-convolutional-networks-for-text-classification.pdf)
+- [ ] [Feature Hashing for Large Scale Multitask Learning](https://alex.smola.org/papers/2009/Weinbergeretal09.pdf)
