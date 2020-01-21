@@ -10,3 +10,7 @@
 - [ ] [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)
 - [ ] [Character-level Convolutional Networks for Text Classification](https://papers.nips.cc/paper/5782-character-level-convolutional-networks-for-text-classification.pdf)
 - [ ] [Feature Hashing for Large Scale Multitask Learning](https://alex.smola.org/papers/2009/Weinbergeretal09.pdf)
+
+### REFERENCED BY "CNN FOR SENTENCE CLASSIFICATION"
+- [ ] [Natural Language Processing (almost) from Scratch](https://arxiv.org/abs/1103.0398)
+- [ ] [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546) 

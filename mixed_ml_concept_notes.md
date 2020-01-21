@@ -214,3 +214,15 @@ class MyFeaturesEngineering(BaseEstimator, TransformerMixin):
     pipe = make_pipeline(MyFeE, make_column_transformer(ohe1, StdScalE), LogisticRegression(**lr_params))
     _, best_score1 = cross_val_and_print(pipe, best_score=best_score1, comment1=feat, comment2=nbins)
 ```
+
+
+**Summary:** Things tried in this solution to find the best combinations <br>
+1. Rigorous cross validation
+2. Plotting categorical variable to find linear relationship
+3. Dropping less impactful factors, e.g., bin_0, bin_3 and create a custom feature by combining them, e.g., bin_0_bin_3
+4. Creating order for the ordinal features using mean of target and test out one by one
+5. creating bins with cyclic features like "day", to create new linear feature
+6. Creating Bins with High Cardinality nominal features, test out one by one
+7. Dropping "first" values of the nominal & one-hot features and test out one by one
+8. Dropping "most frequent" values of the nominal & one-hot features and test out one by one
+9. Combine all technique in one pass
