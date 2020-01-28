@@ -14,3 +14,5 @@
 ### REFERENCED BY "CNN FOR SENTENCE CLASSIFICATION"
 - [ ] [Natural Language Processing (almost) from Scratch](https://arxiv.org/abs/1103.0398)
 - [ ] [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546) 
+
+### REFERENCED BY ""
