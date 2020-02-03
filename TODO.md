@@ -15,4 +15,8 @@
 - [ ] [Natural Language Processing (almost) from Scratch](https://arxiv.org/abs/1103.0398)
 - [ ] [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546) 
 
-### REFERENCED BY ""
+### REFERENCED BY "Neural Machine Translation by Jointly Learning to Align and Translate"
+- [ ] [Domain Adaptation via Pseudo In-Domain Data Selection](https://www.researchgate.net/publication/221012675_Domain_Adaptation_via_Pseudo_In-Domain_Data_Selection)
+
+### REFERENCED BY "Convolutional Sequence to Sequence Learning"
+- [ ] [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf)
