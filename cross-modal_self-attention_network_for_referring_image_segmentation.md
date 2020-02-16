@@ -99,6 +99,27 @@
 - $a_{p,n,p^{\prime}, n^{\prime}}$ is the attention score that takes into accoun the correlation between $(p,n)$ and any other combinations of spatial location and word $(p^\prime,n^\prime)$
 - Then $\hat{v}_{pn}$ is transformed back to the same dimension as $f_{pn}$ via a linear layer and is added element wise with $f_{pn}$ to form a residual connection.
 - $\hat{f}_p = avg-pool_n(W_{\hat{v}}*\hat{v}_{pn}+f_{pn})$
+- $\hat{F} = \{\hat{f_p}:\forall p\}$, so $\hat{F} \in \Reals^{H \times W \times (C_v+C_l+8)}$
 ![Attention Generation](images/CMSA_fig3.png)
 
 #### Gated Multi-Level Fusion
+
+- Using feature representation from multiple scales can improve performance of referring image segmentation --> introduced novel gated fusion technique to integrate multi-level features
+- Let, $\hat{F^{(i)}}$ be the cross modal self attentive feature map at the $i^{th}$ level; 
+- this paper used $ResNet$ based $DeepLab-101$ as the backbone CNN and considered feature maps at three levels: $i = 1,2,3$, i.e. $Res3, Res4, Res5$
+- each layer has different channel dimension, and $1\times1$ convolutional layer was used to make the channel dimensions of different layers consistent and result in an output $X^i$
+- For, $i^{th}$ level create two gates: memory gate $m^i$ and reset gate $r^i$, $r^i,m^i \in \Reals^{H_i \times W_i}$
+- Computation of the gates at each level is decoupled from all other levels
+- $G^i$ is contextual controller modulating the information flow from other levels to the $i^{th}$ level.
+- $G^i = (1-m^i)\odot X^i+\sum_{j\in\{1,2,3\}-\{i\}}\gamma^jm^j\odot X^j$
+- $F^i_o = r^i \odot \tanh{G^i}+(1-r^i)\odot X^i, \forall i \in {1,2,3}$
+- To obtain segmentation mask, aggregate the feature maps $F^i_o$ from three levels and apply a $3\times3$ convolution followed by sigmoid to indicate a probability map for the likelihood of each pixel being part of the foreground segmentation mask.
+
+## Experiments
+#### TODO: Later
+
+## Conclusion
+-  addressed two separate challenges in referring segmentation task.
+-  captured long range dependencies between visual and linguistic modalities--> better feature representation to focus on important information for referred entities
+-  gated multi-level fusion module --> adaptively integrates features from different levels via learnable gates for each individual level.
+-  SOTA

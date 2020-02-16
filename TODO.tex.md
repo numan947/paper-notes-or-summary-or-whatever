@@ -20,3 +20,6 @@
 
 ### REFERENCED BY "Convolutional Sequence to Sequence Learning"
 - [ ] [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf)
+
+### REFERENCED BY "Few-Shot Scene Adaptive Crowd Counting Using Meta-Learning"
+- [ ] [CSRNet: Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes](https://arxiv.org/abs/1802.10062)

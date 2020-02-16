@@ -1,0 +1,288 @@
+<html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"><style>h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;
+}
+
+a {
+    color: #0069d6;
+    text-decoration: none;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+    background-color: #f5f4ea;
+}
+code {
+    background-color: #f5f4ea;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #f5f4ea;
+    color:#454545;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style></head><body><h1 id="-few-shot-scene-adaptive-crowd-counting-using-meta-learning-https-arxiv-org-abs-2002-00264-"><a href="https://arxiv.org/abs/2002.00264">Few-Shot Scene Adaptive Crowd Counting Using Meta-Learning</a></h1>
+<ul>
+<li>given a target camera scene, goal is to adapt a model to this specific scene with only a few labeled images of that scene</li>
+<li>applicability in real world scenario, where we like to deploy a crowd counting model specially adapted to a target camera</li>
+<li>used learning-to-learn paradigm in the context of few-shot regime</li>
+<li>fast adaptation to the target scene</li>
+<li>proposed approach outperforms other alternatives in few shot scene adaptive crowd counting</li>
+</ul>
+<h2 id="introdcution">Introdcution</h2>
+<ul>
+<li>Automated complex crowd scene understanding: surveillance, traffic monitoring,.... --&gt; need crowd counting technique</li>
+<li>main limitation of exisiting technique --&gt; hard to adapt to new crowd scene: require large number of training data-&gt;expensive and time consuming to obtain.</li>
+<li>new method: learns to adapt to a scene from very few labeled data</li>
+<li>Other methods: Crowd-counting --&gt; supervised regression: model generates crowd density map for given image --&gt; model learns to predict the density map of an input image given its ground-truth crowd density map as the label. Final count--&gt; sum over the pixels in the estimated density map.</li>
+<li>Drawback: single model to be used in all unseen images, so training data need to be diverse.</li>
+<li>Recent work --&gt; more effective to learn and deploy model specifically tuned for a particular scene.</li>
+<li>Once camera is installed images of that camera is constrained by camera parameters and 3D geometry of a specific scene. So, we don&#39;t need crowd counting to work for all arbitrary images but images from this specific camera.</li>
+<li>We want to adapt a model to a new camera.</li>
+<li>consider few shot scene adaptive crowd counting.</li>
+<li>During training: access to a set of training images from different scenes. During testing: new scene, new camera and a few (1~5) labeled images from this scene of this camera.</li>
+<li>During training learn optimal model parameters from multiple scene specific data by considering few labeled images per scene --&gt; good initial point for adapting the model to a new scene specific camera.</li>
+</ul>
+<p><img src="images/kumarkm_1.png" alt="PROBLEM DEFINITION"></p>
+<h2 id="related-work">Related Work</h2>
+<h4 id="crowd-counting">Crowd Counting</h4>
+<ul>
+<li>Crowd counting can be grouped into: detection, regression or density-based methods <em>SEE PAPERS: 5,7,3,11,15,22,17</em></li>
+<li>Two learning objectives for density estimation and crowd counting <em>SEE PAPER: 34</em></li>
+<li>multi-column NN to handle input image at multiple scales to overcome the problem of scale variations <em>SEE PAPER 35</em></li>
+<li>Encode local and global input image context to estimate the density map.</li>
+<li>This paper: uses another as backbone<em>SEE PAPER 16</em> </li>
+<li><em>SEE PAPER 4</em>: propose a non-CNN semi-supervised adaptation method by exploiting unlabeled data in the target domain (WHAT IS THIS?) need  corresponding samples that have common labels between the source and target domains</li>
+<li>propose to generate a large synthetic dataset and perform
+domain adaptation to the real-world target domain <em>SEE PAPER 32</em> --&gt; need prior knowledge of the distribution of the target domain</li>
+</ul>
+<h4 id="few-shot-learning">Few-Shot Learning</h4>
+<ul>
+<li>Few shot learning: Learn a model from limited training examples for a task.</li>
+<li>Treat as meta-learning problem: NN as a learner to learn about a new task with just a few instances.</li>
+<li>Recent meta-learning: metric-based, model-based and optimization-based.</li>
+<li>metric based: learn a distance function to measure the similarity between data  points belonging to the same class.</li>
+<li>model based: deploy a model to store previously used training examples.</li>
+<li>optimization based: learns good initialization parameters based on learning from multiple tasks that favor fast adaptation on a new task.</li>
+</ul>
+<h2 id="few-shot-scene-adaptive-crowd-counting">Few-shot Scene Adaptive Crowd Counting</h2>
+<h4 id="problem-setup">Problem Setup</h4>
+<ul>
+<li>Traditional ML: Given, $\mathcal{D} = {\mathcal{D}^{train}, \mathcal{D}^{test}}$, learn $f_{\theta} : \mathcal{x}\rightarrow\mathcal{y}$, where $\theta$ represent the parameters we learn by optimizing a defined loss function over the outputs in the train set.</li>
+<li>Few-shot meta-learning: trained on set of N tasks during meta-learning from $\mathcal{D}_{meta-train}$, where each task has its own train and tes set. $\mathcal{T}_i = {\mathcal{D}_i^{train}, \mathcal{D}_i^{test}}$ correspond to the $i^{th}$ task and both, $\mathcal{D}_i^{train}$ and $\mathcal{D}_i^{test}$ consists of labeled examples.</li>
+<li>Each camera scene is a task in this case. $i^{th}$ scene consists of  M labeled images. Randomly sample a small number $K \in {1,5}$ and $K\ll M$ labeled images for the $i^{th}$ scene. This reflects the real world scenario from having to learn from a few labeled data.</li>
+<li>Goal: learn the model in a way that it can adapt to a new scene using only a few training examples from the new scene during testing when available train set $\mathcal{D}_{new}^{train}$ consists of a few labeled images.</li>
+<li>Used $MAML$--&gt; learns a  set of initial model parameters during the meta-learning stage which are used to initialize the model during meta-testing and is later fine-tuned on the few examples from a new target task.</li>
+</ul>
+<h4 id="approach">Approach</h4>
+<ul>
+<li>For a crowd-counting model, $f<em>\theta$, given input image $\mathcal{x}$, output: $f</em>\theta(\mathcal{x})$ is the crowd density map representing the density level at different spatial locations in the image. Summing over the entries in the generated density map ==  crowd count</li>
+<li>When adapting to a particular scene $\mathcal{T}_i$, the model parameters are updated using a few gradient steps to optimize the previously defined loss function.</li>
+<li><p>This can be thought as inner update during meta-learning and the optimization is expressed as:
+$\tilde{\theta<em>i} = \theta - \alpha\nabla</em>\theta\mathcal{L<em>\mathcal{T_i}}(f</em>\theta)$, where $\mathcal{L<em>\mathcal{T_i}}(f</em>\theta)$ = $\sum<em>{\mathcal{x^j, y^j}\in\mathcal{D^{train}_i}} ||f</em>\theta(\mathcal{x^j})-y^j||^2$ </p>
+</li>
+<li><p>Here $\mathcal{x^j}$ and $\mathcal{y^j}$ denotes the image and corresponding ground truth density map from the scene $\mathcal{T_i}$.</p>
+</li>
+<li>During meta-learning phase, we learn the model parameters $\theta$ by optimizing $\mathcal{L<em>T}_i(f</em>{\tilde{\theta}_i})$ across N different training scenes.
+<img src="images/kumarkm_2.png" alt="An overview of the approach"></li>
+</ul>
+<h4 id="backbone-network-architecture">Backbone Network Architecture</h4>
+<ul>
+<li>Can be used with any backbone crowd counting network architecture.</li>
+<li>This paper uses CSRNet because of SOTA in crowd counting.</li>
+<li>CSRNet -&gt; Feature Extractor + Density Map Estimator</li>
+<li>Feature Extractor: VGG-16 to extract a feature map of the input image. Used first 10 layers of VGG-16 as the feature extractor, output of the FE has 1/8 resolution of the input image.</li>
+<li>DME: consists of a series of dilated CNN layers to regress the output crowd density map for the given image.</li>
+<li>Used pretrained (on ImageNet) VGG-16 to initialize the Feature Extractor.</li>
+<li>Weights of the Density Map Estimator layers are initialized from Gaussian distribution with 0.01 std.</li>
+<li>Train on WorldExpo&#39;10 --&gt; baseline pretrained</li>
+<li>Susceptible when used for adaptation in few labeled data regime as it is not specifically designed to learn from few images ==&gt; use this baseline pretrained network as the starting point for the meta-learning phase</li>
+<li>During meta-learning, fix the parameters of the feature extractor and train only density map estimator on different scene-specific data.</li>
+</ul>
+<h2 id="experiments">Experiments</h2>
+<h4 id="datasets-and-setup">Datasets and Setup</h4>
+<ul>
+<li>Required training images from multiple scenes</li>
+<li>WorldExpo&#39;10 is the only such dataset with multiple scenes</li>
+<li>Also considered two other datasets: Mall, UCSD for cross-dataset testing.</li>
+</ul>
+<p><strong>WordlExpo&#39;10</strong></p>
+<ul>
+<li>consists of 3980 labeled images from 1132 video sequences based on 108 different scenes</li>
+<li>103 for training and 5 for testing</li>
+<li>image resolution: 576 X 720</li>
+</ul>
+<p><strong>Mall</strong></p>
+<ul>
+<li>2000 images from the same camera setup inside a mall.</li>
+<li>image resolution: 640 X 480</li>
+<li>800 training and 1200 testing</li>
+</ul>
+<p><strong>UCSD</strong></p>
+<ul>
+<li>2000 images from same surveillance camera setup</li>
+<li>captures pedestrian scene</li>
+<li>relatively sparse crowd density (11~46)</li>
+<li>resolution: 238 X 158</li>
+<li>800 for training and 1200 for testing</li>
+</ul>
+<p><strong>Ground Truth Density Maps</strong></p>
+<ul>
+<li>All datasets have dot annotations, where each person in the image is annotated with a single point.</li>
+<li>Used Gaussian kernel to blur the point annotations in an image to create the ground-truth density map. ($\sigma$ = 3)</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<ul>
+<li>PyTorch</li>
+<li>SGD with learning rate  = 0.001</li>
+<li>Adam with learning rate = 0.001</li>
+</ul>
+<p><strong>Evaluation Metrics</strong></p>
+<ul>
+<li>MAE: Mean Absolute Error</li>
+<li>RMSE: Root Mean Squared Error</li>
+<li>MDE: Mean Deviation Error</li>
+<li>DIDN&#39;T UNDERSTAND THE SUMMING OVER THE PIXEL TECHNIQUE</li>
+</ul>
+<h4 id="baselines">Baselines</h4>
+<p><strong>Baseline Pretrained:</strong></p>
+<ul>
+<li>standard crowd counting model trained in a standard supervised setting</li>
+<li>model parameters are trained from all images in the training set, once done, model is evaluated directly in new scene without adaptation.</li>
+</ul>
+<p><strong>Baseline Fine-tuned:</strong></p>
+<ul>
+<li>Density maps are fine tuned for new scenes before evaluation to fine tune the model.</li>
+</ul>
+<p><strong>Meta pre-trained:</strong></p>
+<ul>
+<li>without fine tuning on the target scene</li>
+</ul>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></body></html>

@@ -1,0 +1,247 @@
+<html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"><style>h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;
+}
+
+a {
+    color: #0069d6;
+    text-decoration: none;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+    background-color: #f5f4ea;
+}
+code {
+    background-color: #f5f4ea;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #f5f4ea;
+    color:#454545;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style></head><body><h1 id="-deep-residual-learning-for-image-recognition-https-arxiv-org-abs-1512-03385-"><a href="https://arxiv.org/abs/1512.03385">Deep Residual Learning for Image Recognition</a></h1>
+<h2 id="introduction">Introduction</h2>
+<p><img src="images/resnet_fig1.png" alt="alt text" title="Deeper Layer producing higher training and testing error"></p>
+<ul>
+<li><p>depth is important for image classification and leading results uses very deep architectures on ImageNet dataset</p>
+</li>
+<li><p>Question - is learning better networks as easy as stacking more layers?</p>
+</li>
+<li>Problem - Exploding/Vanishing gradient -- mitigated by batch normalization and better initialization</li>
+<li>Problem - Performance degradation during convergence of deep networks -- with increase of depth of network, accuracy gets  saturated and hen degrades rapidly -- this is not caused by overfitting  and adding more layers to suitably deep models leads to higher training accuracy. <em>This is the problem addressed by this paper</em>.</li>
+<li>degradation indicates -- not all systems are similarly easy to optimize.</li>
+<li>Solution by construction -- shallow network with deeper identity layers -- shouldn&#39;t perform worse than the shallow network, but experiments shows otherwise.</li>
+<li>addressing <strong>degradation problem</strong> -- explicitly let the layers fit a residual mapping instead of fitting original underlying mapping.</li>
+<li>x -- input, H(x) -- underlying mapping. We fit F(x) = H(x)-x =&gt; H(x) = F(x)+x</li>
+<li>hypothesis -- if identity mapping were optimal, it would be easier to push the residual to zero than to fit an identity mapping by a stack of nonlinear layers.</li>
+<li>F(x) + x -- feedforward with shortcut connections -- connections skipping one or more layers.</li>
+</ul>
+<h2 id="related-work">Related work</h2>
+<p><em>SKIPPING FOR NOW</em></p>
+<h2 id="deep-residual-learning">Deep Residual Learning</h2>
+<p><img src="images/resnet_fig2.png" alt="alt text" title="Example ResNet block"></p>
+<ul>
+<li><p>H(x) -- underlying mapping to be fit by stacked layers, x is input to the first of the layers</p>
+</li>
+<li><p>if multiple nonlinear layers can asymptotically approximate complicated functions, then these layers can also approximate the residual functions: H(x) - x</p>
+</li>
+<li>Stacked layers are allowed to approximate H(x) - x, instead of approximating H(x)</li>
+<li>motivated by counterintuitive phenomena about degradation problem. If added layers are identity mappings, deeper models shouldn&#39;t have worse performance than shallower models. The degradation problem indicates that solvers may have difficulties in approximating identity mappings by multiple nonlinear layers. In residual learning, solvers may optimize by driving the layer weights towards zero to approximate identity mappings.</li>
+<li>If optimal functions are closer to an identity mapping than to a zero mapping, it should be easier for the solvers to find changes with reference to an identity mapping, than to learn the function as a new one.</li>
+<li>y = RELU(F(x) + x) -- nonlinearity is applied after logits and inputs are elementwise added. F(x) and x should have same dimension. If the dimensions are different we can use a linear projection to match the dimensions: y = RELU(F(x) + proj(x))</li>
+<li>form of residual function, F is flexible. The paper uses a function with 2 or 3 layers. Single layer F might not be have any advantages.</li>
+<li>F(x) can represent multiple Conv layer. Elementwise addition is performed on two feature maps, channel by channel.</li>
+</ul>
+<p><img src="images/resnet_fig3.png" alt="alt text" title="Example VGG, Plain and ResNet."></p>
+<ul>
+<li><p>Plain network - -inspired by VGG -- 2 design rules -- a) for same output size, layers have same number of filter b) if output size is halved, number of filters is doubled. Downsampling is performed by CNN with stride=2. Final CNN layer output is averaged pool into a 1000 way fully connected layer with softmax. Total weighted layers -- 34.</p>
+</li>
+<li><p>ResNet has fewer filters and lower complexity than that of VGGNet.</p>
+</li>
+<li>34 layer plain + shortcut connections == resnet, if the dimensions of inputs and outputs don&#39;t match -- a) use extra zero padding for the increasing dimensions or b)use projection to match the dimensions (using 1x1 CNNs)</li>
+<li><p>Implementation: </p>
+<ul>
+<li><p>Training</p>
+<ol>
+<li>image is resized with its shorter side randomly sampled in (256,480) for scale augmentation (<em>need to see VGGNet paper</em>).</li>
+<li>A 224X224 crop is randomly sampled from an image or its horizontal flip, with per pixel mean subtracted. Standard color augmentation is used. (<em>need to see AlexNet paper</em>).</li>
+<li>Added batch normalization after each convolution before activation. (<em>need to see Batch normalization paper of S. Ioffe</em>).</li>
+<li>Weights were initialized using a initialization method. (<em>need to see Delving deeper into rectifiers: ... by K. He</em>)</li>
+<li>Trained all the layers from scratch.</li>
+<li>SGD with mini-batch size of 256, weight decay 0.0001, momentum 0.9.</li>
+<li>Learning rate: started from 0.1 and is divided by 10, when error plateaus.</li>
+<li>Trained up to 60,000 epochs.</li>
+<li>No dropout was used according to BN paper.</li>
+</ol>
+</li>
+<li><p>Testing</p>
+<ol>
+<li>adopted standard 10-crop testing (<em>need to see AlexNet Paper</em>)</li>
+<li>adopted fully convolutional form and average scores at multiple scales -- {224, 256, 384, 480, 640} (<em>didn&#39;t understand this part, see -- Kaiming  He paper and VGGNet paper</em>)</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="experiments">Experiments</h2>
+<h4 id="imagenet-2012-classification-dataset">ImageNet 2012 classification dataset</h4>
+<ul>
+<li>1000 classes</li>
+<li>1.28 million training images</li>
+<li>50k validation images</li>
+<li>100k test images</li>
+<li>evaluated top-1 and top-5 error rates.</li>
+</ul>
+<p><img src="images/resnet_fig4.png" alt="alt text" title="ResNet models perform better and/or faster than plain models">
+<img src="images/resnet_fig5.png" alt="alt text" title="ResNet models perform better and/or faster than plain models"></p>
+<ul>
+<li>A = ResNet with zero padded shortcuts | B = projection shortcuts are used for increasing dimensions other shortcuts are identity | C = all shortcuts are projections</li>
+<li>the small differences among A/B/C indicate that projection shortcuts are
+not essential for addressing the degradation problem</li>
+</ul>
+<h4 id="bottleneck-architectures">Bottleneck Architectures</h4>
+<p><img src="images/resnet_fig6.png" alt="alt text" title="General and Bottleneck architecture"></p>
+<ul>
+<li><p>Needed faster training, so redesigned residual function as a <em>bottleneck</em> design.</p>
+</li>
+<li><p>each residual function F is a stack of 3 layers -- 1x1, 3x3 and 1x1 convolutions</p>
+</li>
+<li>1x1 layers are responsible for reducing and restoring dimensions.</li>
+<li>identity shortcuts are very important for bottleneck architectures, if identity is replaced by projections -- model size and complexity will be doubled as the shortcut would be connected to two high dimensional ends. So, identity is more efficient in these bottleneck designs.</li>
+<li><p>ResNet30 - 2 Layer F + 3 Layer bottleneck F = ResNet50</p>
+<p><img src="images/resnet_fig7.png" alt="alt text" title="ResNet have lower layer responses than that of plain nets"></p>
+</li>
+<li><p>ResNets have lower layer responses -- supports the hypothesis that residual functions might be generally closer to zero than non residual functions. Deeper ResNets have smaller magnitudes of responses. When there are more layers, individual layer of ResNets tends to modify the signal less.</p>
+</li>
+<li>Deeper, 1202-layer ResNet have testing error higher than 110-layer ResNet, authors argue in favor of overfitting.</li>
+</ul>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></body></html>
