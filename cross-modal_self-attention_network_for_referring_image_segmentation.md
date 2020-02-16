@@ -89,5 +89,16 @@
 - multimodal feature F is large and may contain a lot of redundant information
 - F is variable sized and depends on the number of words in the language description and it's difficult to exploit F to produce the segmentation output
 - Proposed cross-modal attention module to jointly exploit attentions over multimodal features.
-- designed cross modal self attention module can capture longrange dependencies between the words in a referring expression and different spatial locations in the input image.
-- The module takes $F$ as input and produces a feature map that summarizes F after learning the correlation between the language expression and the visual context.
+- designed cross modal self attention module can capture long range dependencies between the words in a referring expression and different spatial locations in the input image.
+- The module takes $F$ as input and produces a feature map that summarizes $F$ after learning the correlation between the language expression and the visual context.
+- Size of the output feature map is fixed and doesn't depend on the number of words present in the language description.
+- Given $f_{pn}$, self-attention module first generates a set of query, key and value pair by linear transformations as $q_{pn} = W_qf_{pn}$, $k_{pn}=W_kf_{pn}$, and $v_{pn}=W_vf_{pn}$ for each spatial location $p$ and $n^{th}$ word.
+- Every query, key, value is reduced from the high dimension of multimodal features to the dimension of 512 in this implementation, i.e. $W_q, W_k, W_v \in \Reals^{512 \times (C_v+C_l+8)}$
+- Cross modal self attentive feature $\hat{v}_{pn}=\sum_{p^\prime}\sum_{n^\prime}a_{p,n,p^{\prime}, n^{\prime}}v_{p^{\prime}, n^{\prime}}$
+- $a_{p,n,p^{\prime}, n^{\prime}} = Softmax(q^T_{p^\prime n^\prime}*k_{pn})$
+- $a_{p,n,p^{\prime}, n^{\prime}}$ is the attention score that takes into accoun the correlation between $(p,n)$ and any other combinations of spatial location and word $(p^\prime,n^\prime)$
+- Then $\hat{v}_{pn}$ is transformed back to the same dimension as $f_{pn}$ via a linear layer and is added element wise with $f_{pn}$ to form a residual connection.
+- $\hat{f}_p = avg-pool_n(W_{\hat{v}}*\hat{v}_{pn}+f_{pn})$
+![Attention Generation](images/CMSA_fig3.png)
+
+#### Gated Multi-Level Fusion
