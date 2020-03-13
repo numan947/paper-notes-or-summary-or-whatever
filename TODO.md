@@ -23,3 +23,16 @@
 
 ### REFERENCED BY "Few-Shot Scene Adaptive Crowd Counting Using Meta-Learning"
 - [ ] [CSRNet: Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes](https://arxiv.org/abs/1802.10062)
+
+
+### REFERENCED BY "Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection" (CVPR 2020)
+
+- [ ] [Focal loss for dense object detection](https://arxiv.org/abs/1708.02002)
+- [ ] [SSD: single shot multibox detector](https://arxiv.org/abs/1512.02325)
+- [ ] [R-FCN: object detection via region-based fully convolutional networks](https://papers.nips.cc/paper/6465-r-fcn-object-detection-via-region-based-fully-convolutional-networks.pdf)
+- [ ] [Faster R-CNN: towards real-time object detection with region proposal networks.](https://arxiv.org/abs/1506.01497)
+- [ ] [Feature pyramid networks for object detection](https://arxiv.org/abs/1612.03144)
+- [ ] [Cornernet: Detecting objects as paired keypoints](https://arxiv.org/abs/1808.01244)
+- [ ] [Bottom-up object detection by grouping extreme and center points.](https://arxiv.org/abs/1901.08043)
+- [ ] [FCOS: fully convolutional one-stage object detection](https://arxiv.org/abs/1904.01355)
+- [ ] [Foveabox: Beyond anchor-based object detector](https://arxiv.org/abs/1904.03797)
