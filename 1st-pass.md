@@ -36,3 +36,6 @@
 - [ ] [Bottom-up object detection by grouping extreme and center points.](https://arxiv.org/abs/1901.08043)
 - [ ] [FCOS: fully convolutional one-stage object detection](https://arxiv.org/abs/1904.01355)
 - [ ] [Foveabox: Beyond anchor-based object detector](https://arxiv.org/abs/1904.03797)
+
+### REFERENCED BY "BiDet: An Efficient Binarized Object Detector" (CVPR 2020)
+- [ ] [Fast r-cnn](https://arxiv.org/abs/1504.08083)

@@ -44,3 +44,12 @@
 2. Proposing ATSS
 3. Demonstrating that tiling multiple anchors/location is unnecessary.
 4. SOTA on MS COCO w/o any additional overhead.
+
+# TODO: REST WILL BE COMPLETED LATER DURING MY 2ND PASS OF THE PAPER
+
+## Conclusion
+
+- selecting positive and negative samples during training of the object detector is critical for performance.
+- ATSS: automatically divides +ve and -ve training samples according to statistical charactersitics of object
+- currently, tiling multiple anchors at each location is unnecessary
+- SOTA w/o additional overhead.
