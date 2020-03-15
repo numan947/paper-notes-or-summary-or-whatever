@@ -14,11 +14,11 @@
 - CNN-based Object Detection requires massive computation and storage resources for ideal performance -- limits deployment on mobiel devices -- need lightweight architectures
 
 **Proposed Compression Methods:**<br>
-1. Prunning (12, 27, 45)
-2. Low-rank decomposition (16,20,28)
-3. Quantization (9,19,41)
-4. Knowledge distillation(3,40,42)
-5. Architecture Design(29,34,44)
+1. Prunning (Channel Prunning, Importance Estimation, Variational Conv)
+2. Low-rank decomposition (Compression ...)
+3. Quantization
+4. Knowledge distillation
+5. Architecture Design
 6. Architecture Search(37,43)
 
 - Quantization reduces bitwidth of the network parameters and activations for efficient inference
@@ -37,3 +37,8 @@
 1. First BNN containing the backbone and detection parts for efficient object detection
 2. Use IB principle for redundancy removal to fully utilize the capacity of BNNs and learn sparse object priors to concentrate posteriors on informative detection prediction for enhanced detection accuracy and lower FPs.
 3. Evaluated on PASCAL VOC and COCO: SOTA BNN based object detector
+
+## Conclusion
+- Proposed BiDet -- binarized NN learning method.
+- BiDet removes redundant information via information bottleneck principle to fully use the representational capacity of BNNs and enforce posteriors to be concentrated on informative prediction for FP elimination which leads to significan precision enhancement.
+- SOTA for BNN object detection
