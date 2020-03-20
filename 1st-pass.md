@@ -28,7 +28,7 @@
 ### REFERENCED BY "Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection" (CVPR 2020)
 
 - [ ] [Focal loss for dense object detection](https://arxiv.org/abs/1708.02002)
-- [ ] [SSD: single shot multibox detector](https://arxiv.org/abs/1512.02325)
+- [X] [SSD: single shot multibox detector](https://arxiv.org/abs/1512.02325)
 - [ ] [R-FCN: object detection via region-based fully convolutional networks](https://papers.nips.cc/paper/6465-r-fcn-object-detection-via-region-based-fully-convolutional-networks.pdf)
 - [ ] [Faster R-CNN: towards real-time object detection with region proposal networks.](https://arxiv.org/abs/1506.01497)
 - [ ] [Feature pyramid networks for object detection](https://arxiv.org/abs/1612.03144)
@@ -56,3 +56,7 @@
 - [ ] [ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices](https://arxiv.org/abs/1707.01083)
 - [ ] [Mnasnet: Platform-aware neural architecture search for mobile.](https://arxiv.org/abs/1807.11626)
 - [ ] [FBNet: Hardware-aware efficient convnet design via differentiable neural architecture search.](https://arxiv.org/abs/1812.03443)
+
+### REFERENCED BY "SSD: Single Shot MultiBox Detector" (ECCV 2016)
+- [ ] [Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition](https://arxiv.org/abs/1406.4729)
+- [ ] [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640)
