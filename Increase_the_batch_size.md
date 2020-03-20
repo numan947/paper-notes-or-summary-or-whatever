@@ -8,11 +8,11 @@
 - Can also increase momentum coefficient m, and scale B ∝ 1/(1-m) -- may lead to slightly reduced test accuracy.
 - trained ResNet-50 on ImageNet to 76.1% accuracy in under 30 minutes.
 
-## Introduction
+## Introduction | Conclusion
 
 - SGD - dominant optimization algorithm for deep learning - slow: each parameter update takes a small step towards the objective
 - Large batch sizes -- reduces training time but test set accuracy falls.
-- Decaying learning rate simulated annealing => reduce random fluctuations in SGD dynamics.
+- Decaying learning rate simulated annealing ⇒ reduce random fluctuations in SGD dynamics.
 - Instead of decreasing LR, increase batch size: when learning rate drops by a factor of α, increase the batch size by a factor of α -- achieves almost identical model performance but significantly lower number of parameter upgrades.
-- Further reduce number of parameter updates b increasing learning rate and scaling B ∝ ϵ, also increase momentum coefficient m, and scale B ∝ 
+- Further reduce number of parameter updates b increasing learning rate and scaling B ∝ ϵ, also increase momentum coefficient m, and scale B ∝ 1/(1-m)
 
