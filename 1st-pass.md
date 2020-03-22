@@ -60,3 +60,7 @@
 ### REFERENCED BY "SSD: Single Shot MultiBox Detector" (ECCV 2016)
 - [ ] [Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition](https://arxiv.org/abs/1406.4729)
 - [ ] [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640)
+- [ ] [Some improvements on deep convolutional neural network based image classification](https://arxiv.org/abs/1312.5402)
+- [ ] [Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs](https://arxiv.org/abs/1412.7062)
+- [ ] [COCO-Stuff: Thing and Stuff Classes in Context](https://arxiv.org/abs/1612.03716)
+- [ ] 
