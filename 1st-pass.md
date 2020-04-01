@@ -63,4 +63,7 @@
 - [ ] [Some improvements on deep convolutional neural network based image classification](https://arxiv.org/abs/1312.5402)
 - [ ] [Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs](https://arxiv.org/abs/1412.7062)
 - [ ] [COCO-Stuff: Thing and Stuff Classes in Context](https://arxiv.org/abs/1612.03716)
-- [ ] 
+
+### REFERENCED BY "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention" (ICML 2015)
+
+- [ ] [Deep visual-semantic alignments for generating image descriptions](https://arxiv.org/abs/1412.2306)
