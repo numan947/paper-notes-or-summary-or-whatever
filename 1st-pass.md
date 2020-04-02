@@ -67,3 +67,8 @@
 ### REFERENCED BY "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention" (ICML 2015)
 
 - [ ] [Deep visual-semantic alignments for generating image descriptions](https://arxiv.org/abs/1412.2306)
+
+### REFERENCED BY "Similarity-Based Reconstruction Loss for Meaning Representation" (EMNLP 2018)
+- [ ] [Universal sentence encoder](https://arxiv.org/abs/1803.11175)
+- [ ] [A Simple but Tough-to-Beat Baseline for Sentence Embeddings](https://openreview.net/forum?id=SyK00v5xx)
+- [ ] [Deep contextualized word representations](https://arxiv.org/abs/1802.05365)
